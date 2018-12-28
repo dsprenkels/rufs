@@ -64,7 +64,7 @@ func (m *Master) Setup() error {
 
 	tlsCfg := getTlsConfig(TlsConfigMaster, m.vault.ca, m.vault.getTlsCert(), "rufs-master")
 
-	sock, err := tls.Listen("tcp", fmt.Sprintf(":%d", m.port), tlsCfg)
+	sock, err := tls.Listen("tcp4", fmt.Sprintf(":%d", m.port), tlsCfg)
 	if err != nil {
 		return err
 	}
